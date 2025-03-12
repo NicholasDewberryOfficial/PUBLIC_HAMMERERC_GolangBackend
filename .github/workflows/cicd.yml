@@ -1,0 +1,34 @@
+name: Deploy Go Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v4
+      - name: create env.env
+        run: echo "PORT=${{ secrets.PORT }}" >> .env
+      - name: login to dockerhub
+        run: docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERPASSWORD }}
+      - name: builddocker image
+        run: docker build -t dewberryncat/dewpushingtoaws .
+      - name: push img to dockerhub
+        run: docker push dewberryncat/dewpushingtoaws:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: login to dockerhub
+        run: docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERPASSWORD }}
+      - name: pull dockerimg
+        run: docker pull dewberryncat/dewpushingtoaws:latest
+      - name: delete oldcontianer if there is one
+        run: docker rm -f go-app-container
+      - name: run dockerimg
+        run: docker run -d -p 8080:8080 --name go-app-container dewberryncat/dewpushingtoaws

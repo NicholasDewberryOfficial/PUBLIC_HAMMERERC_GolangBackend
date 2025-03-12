@@ -1,0 +1,29 @@
+<!-- templates/qrcode.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code</title>
+   <!-- <link rel="stylesheet" href="<https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css>"> -->
+
+    <link href="<https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css>">
+
+</head>
+<body>
+<div class="container mt-5 text-center">
+    <h1 class="mb-3">HAMMER ERC - SCAN QR CODE </h1>
+        <p class="mb-4"> An authenticator app is needed. </p>
+        <p> I reccomend Google authenticator if you don't have one. </p>
+   <!-- <img src="https://quickchart.io/qr?text={{.OTPURL}}" class="img-fluid mb-3" alt="QR Code"> -->
+    <img src="https://quickchart.io/chart?cht=qr&chl={{.OTPURL}}&chs=180x180&choe=UTF-8&chld=L|2" class="img-fluid mb-3" alt="QR Code">
+
+    <form action="/valOTP" method="get">
+        <input type="hidden" name="username" value="{{.Username}}">
+        <button type="submit" class="btn btn-primary"> I've Scanned the QR Code </button>
+    </form>
+
+
+
+</div>
+</body>
+</html>

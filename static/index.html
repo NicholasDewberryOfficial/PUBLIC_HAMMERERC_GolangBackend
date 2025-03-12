@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Upload Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("css-pattern-by-magicpattern (4).png")
+
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        .upload-btn, .action-btn {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .upload-btn:hover, .action-btn:hover {
+            background-color: #0056b3;
+        }
+        .upload-input {
+            display: none;
+        }
+        .action-buttons {
+            margin-top: 20px;
+        }
+        .action-btn {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to the HAMMER ERC Thrust-1 Portal! </h1>
+    <label for="Text_geometry" class="upload-btn">Upload Text Geometry</label>
+    <input type="file" id="Text_geometry" class="upload-input">
+
+    <label for="upload-toolpaths" class="upload-btn">Upload Robot Toolpaths</label>
+    <input type="file" id="upload-toolpaths" class="upload-input">
+
+    <label for="3D-Geometry" class="upload-btn">Upload 3D Geometry</label>
+    <input type="file" id="3D-Geometry" class="upload-input">
+
+    <div class="action-buttons">
+        <button class="action-btn">UNPROCESSED DATA</button>
+        <button class="action-btn">PROCESSED DATA</button>
+        <button class="action-btn">AUTHENTICATION PORTAL</button>
+        <button class="action-btn">DEBUGGING</button>
+    </div>
+</div>
+</body>
+</html>
